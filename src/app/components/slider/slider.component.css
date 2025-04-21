@@ -1,0 +1,114 @@
+.slider-range-container {
+	width: 100%;
+}
+
+.selected-range {
+	font-size: 0.9rem;
+	gap: 8px;
+	padding-left: 1rem;
+}
+
+.reset-button {
+	padding: 3px 6px;
+	background-color: var(--accent-color);
+	color: var(--text-white-color);
+	border: none;
+	border-radius: var(--radius-sm);
+	cursor: pointer;
+	gap: 0.25rem;
+}
+
+.reset-button:hover {
+	background-color: var(--accent-hover-color);
+}
+
+.slider-container {
+	position: relative;
+	height: 40px;
+}
+
+.start-slider,
+.end-slider {
+	position: absolute;
+	width: 100%;
+	-webkit-appearance: none;
+	appearance: none;
+	background: transparent;
+	top: 25%;
+	transform: translateY(-50%);
+	height: 0;
+	z-index: 30;
+	pointer-events: all;
+	padding: 0;
+}
+
+.start-slider::-webkit-slider-thumb,
+.end-slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 18px;
+	height: 18px;
+	border-radius: var(--radius-round);
+	background: var(--input-color);
+	cursor: pointer;
+	border: 2px solid var(--text-light-color);
+}
+
+.start-slider::-moz-range-thumb,
+.end-slider::-moz-range-thumb {
+	width: 20px;
+	height: 20px;
+	border-radius: var(--radius-round);
+	background: var(--input-color);
+	cursor: pointer;
+	border: 2px solid var(--text-light-color);
+}
+
+.start-slider::-webkit-slider-thumb {
+	background: var(--input-color);
+}
+
+.end-slider::-webkit-slider-thumb {
+	background: var(--input-color);
+}
+
+.start-slider::-moz-range-thumb {
+	background: var(--input-color);
+}
+
+.end-slider::-moz-range-thumb {
+	background: var(--input-color);
+}
+
+.start-slider::-webkit-slider-runnable-track,
+.end-slider::-webkit-slider-runnable-track {
+	height: 0;
+	border: none;
+}
+
+.start-slider::-moz-range-track,
+.end-slider::-moz-range-track {
+	height: 0;
+	border: none;
+}
+
+.slider-track {
+	position: absolute;
+	width: 100%;
+	height: 7px;
+	background: var(--surface-light-color);
+	top: 50%;
+	transform: translateY(-50%);
+	border-radius: 3px;
+	z-index: 10;
+}
+
+.slider-range {
+	position: absolute;
+	height: 7px;
+	background: var(--primary-color);
+	top: 50%;
+	transform: translateY(-50%);
+	border-radius: 3px;
+	z-index: 15;
+}

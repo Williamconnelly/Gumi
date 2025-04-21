@@ -1,0 +1,43 @@
+<div class="slider-range-container">
+	<div class="selected-range flex-align-center">
+		{{ title }}: {{ minValueControl.value }} - {{ maxValueControl.value }}
+		@if (showResetButton()) {
+			<button
+				class="reset-button flex-center"
+				(click)="resetValues()"
+			>
+				<gumi-icon
+					[type]="cancelIconType"
+					size="16"
+				/>
+			</button>
+		}
+	</div>
+
+	<div class="slider-container">
+		<div class="slider-track"></div>
+		<div
+			class="slider-range"
+			[style.left.%]="leftPosition"
+			[style.right.%]="rightPosition"
+		></div>
+
+		<input
+			type="range"
+			[min]="sliderRange.minValue"
+			[max]="sliderRange.maxValue"
+			[formControl]="minValueControl"
+			(input)="onSliderChange('min')"
+			class="start-slider no-margin"
+		/>
+
+		<input
+			type="range"
+			[min]="sliderRange.minValue"
+			[max]="sliderRange.maxValue"
+			[formControl]="maxValueControl"
+			(input)="onSliderChange('max')"
+			class="end-slider no-margin"
+		/>
+	</div>
+</div>
