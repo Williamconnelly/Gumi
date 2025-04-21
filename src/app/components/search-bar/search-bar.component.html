@@ -1,0 +1,19 @@
+<form (ngSubmit)="onSearch()">
+	<div class="input-group">
+		<input
+			type="text"
+			class="search-input"
+			placeholder="Search Anilist Users"
+			[(ngModel)]="searchQuery"
+			name="searchQuery"
+			autocomplete="off"
+		/>
+		<button
+			type="submit"
+			class="search-button"
+			[class.active]="searchQuery.trim().length > 0"
+		>
+			Search
+		</button>
+	</div>
+</form>
