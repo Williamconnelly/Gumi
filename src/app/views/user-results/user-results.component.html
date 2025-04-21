@@ -1,0 +1,58 @@
+<div class="search-results-container">
+	<div class="search-header">
+		<div class="header-container flex-justify-center">
+			<div class="navbar-logo flex-center">
+				<a routerLink="/">Gumi</a>
+			</div>
+			<div class="query-display flex-center">
+				Search Results for
+				<p>—</p>
+				<span>"{{ userQuery }}"</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="results-body body-height">
+		@if (userResults()) {
+			<gumi-search-bar (userSubmit)="onSearch($event)" />
+
+			@if (!hasError()) {
+				@if (userResults()?.length) {
+					<table class="user-table">
+						<thead>
+							<tr>
+								<th>User</th>
+								<th>Anime</th>
+								<th>Manga</th>
+								<th>Favorite Staff</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							@for (user of userResults(); track user.id) {
+								<tr (click)="onUserSelect(user)">
+									<td class="flex-align-center">
+										<img
+											[src]="user.avatar.medium || user.avatar.large"
+											[alt]="user.name"
+											class="user-small-avatar"
+										/>
+										<span class="user-name">{{ user.name }}</span>
+									</td>
+									<td>{{ user.statistics.anime?.count || '0' }}</td>
+									<td>{{ user.statistics.manga?.count || '0' }}</td>
+									<td>{{ user.favourites.staff.edges.length }}</td>
+									<td></td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				} @else {
+					<gumi-no-results-card subMessage="Unable to find any Users matching your search." />
+				}
+			} @else {
+				<gumi-error-card />
+			}
+		}
+	</div>
+</div>

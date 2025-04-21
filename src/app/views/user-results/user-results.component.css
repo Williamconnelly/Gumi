@@ -1,0 +1,100 @@
+gumi-search-bar {
+	max-width: 700px;
+}
+
+.navbar-logo {
+	width: 20rem;
+	border-right: 1px solid var(--border-color);
+}
+
+.navbar-logo a {
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: var(--primary-color);
+	text-decoration: none;
+}
+
+.search-header {
+	background-color: var(--input-color);
+	border-bottom: 1px solid var(--border-color);
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	display: flex;
+	height: 3rem;
+	color: var(--text-light-color);
+}
+
+.header-container {
+	height: 100%;
+	gap: 2rem;
+}
+
+.query-display {
+	gap: 1rem;
+}
+
+.query-display span {
+	color: var(--accent-color);
+}
+
+.results-body {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	max-width: 1900px;
+	margin: 0 auto;
+	padding: 2rem;
+}
+
+.user-table {
+	width: 100%;
+	border-radius: var(--radius-md);
+	color: var(--text-light-color);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	border-collapse: separate;
+	border-spacing: 0 8px;
+	overflow-x: auto;
+}
+
+.user-table th,
+.user-table td {
+	padding: 12px 15px;
+	text-align: left;
+}
+
+.user-table th {
+	background-color: var(--primary-dim-color);
+	font-weight: 500;
+	color: var(--text-white-color);
+}
+
+.user-table tbody tr {
+	position: relative;
+	background-color: var(--surface-color);
+	border: 1px solid transparent;
+	border-bottom: 1px solid var(--border-color);
+	border-radius: var(--radius-md);
+	cursor: pointer;
+	transition: transform 200ms ease-out;
+}
+
+.user-table tbody tr:last-child {
+	border-bottom: none;
+}
+
+.user-table tbody tr:hover {
+	border-color: var(--primary-color);
+	transform: translateX(10px);
+	box-shadow: inset 0 0 0 1px var(--primary-color);
+	padding: 1px;
+}
+
+.user-small-avatar {
+	width: 40px;
+	height: 40px;
+	border-radius: var(--radius-round);
+	margin-right: 10px;
+	object-fit: cover;
+}
