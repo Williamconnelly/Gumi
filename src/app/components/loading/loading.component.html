@@ -1,0 +1,46 @@
+@let loading = loading$ | async;
+
+@if (loading?.isLoading) {
+	<div class="loading-overlay flex-center full-size">
+		<div
+			class="loading-content flex-justify-center"
+			[style.borderColor]="loading?.errors?.length ? 'var(--error-color)' : 'var(--primary-color)'"
+		>
+			<div class="flex-center">
+				<div class="ripple">
+					<div class="full-size"></div>
+					<div class="full-size"></div>
+				</div>
+			</div>
+
+			@if ((loading$ | async)?.progress !== undefined) {
+				<div class="progress-container">
+					<div
+						class="progress-bar"
+						[style.width.%]="(loading$ | async)?.progress"
+					></div>
+				</div>
+			}
+
+			<ng-container *ngTemplateOutlet="Message; context: { $implicit: loading?.messages, class: 'message' }"></ng-container>
+			<ng-container *ngTemplateOutlet="Message; context: { $implicit: loading?.errors, class: 'error' }"></ng-container>
+		</div>
+	</div>
+}
+
+<ng-template
+	#Message
+	let-messages
+	let-class="class"
+>
+	@if (messages?.length) {
+		@for (message of messages; track message.message) {
+			<div [class]="class">{{ message.message }}</div>
+			@if (message.subMessages?.length) {
+				@for (sub of message.subMessages; track sub) {
+					<div [class]="'sub-' + class">{{ sub }}</div>
+				}
+			}
+		}
+	}
+</ng-template>
