@@ -1,0 +1,23 @@
+<div class="input-container">
+	<input
+		autocomplete="off"
+		class="input"
+		type="text"
+		[(ngModel)]="value"
+		[placeholder]="placeholder || ''"
+		(ngModelChange)="valueChange.emit($event)"
+		(keyup.enter)="onSubmit()"
+	/>
+	@if (value) {
+		<button
+			type="button"
+			class="clear-button flex-center"
+			(click)="onClear()"
+		>
+			<gumi-icon
+				[type]="cancelIconType"
+				size="20"
+			/>
+		</button>
+	}
+</div>
