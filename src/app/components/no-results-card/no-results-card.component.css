@@ -1,0 +1,31 @@
+:host {
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+
+.icon-container {
+	background-color: var(--surface-light-color);
+	color: var(--accent-color);
+	border-radius: 999px;
+	padding: var(--padding-md);
+}
+
+.no-results {
+	height: 100%;
+	background-color: var(--surface-color);
+	padding: var(--padding-md);
+	border-radius: 6px;
+	border: 1px solid var(--border-color);
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.no-results p {
+	color: var(--accent-color);
+	font-weight: bold;
+}
+
+.no-results span {
+	color: var(--text-light-color);
+}

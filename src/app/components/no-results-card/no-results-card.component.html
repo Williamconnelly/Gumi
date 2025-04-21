@@ -1,0 +1,14 @@
+@let results = message();
+<div class="no-results flex-center">
+	<div class="icon-container flex-center">
+		<gumi-icon
+			size="35"
+			[type]="errorIconType"
+		/>
+	</div>
+	<p>{{ results.message }}</p>
+	@if (results.subMessage) {
+		<span>{{ results.subMessage }}</span>
+	}
+	<ng-content></ng-content>
+</div>
