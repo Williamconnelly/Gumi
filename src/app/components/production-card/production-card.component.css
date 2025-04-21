@@ -1,0 +1,343 @@
+.anime-staff-card {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	color: var(--text-light-color);
+	width: 100%;
+	margin-bottom: 1rem;
+}
+
+.card-container {
+	background-color: var(--surface-color);
+	border-radius: 0.5rem;
+	overflow: hidden;
+	border: 1px solid var(--border-color);
+	box-shadow:
+		0 10px 15px -3px rgba(0, 0, 0, 0.1),
+		0 4px 6px -2px rgba(0, 0, 0, 0.05);
+	transition:
+		transform var(--transition-speed) ease,
+		box-shadow var(--transition-speed) ease,
+		border-color ease;
+}
+
+.card-container:hover {
+	border-color: var(--primary-color);
+	transform: translate(10px);
+}
+
+.card-container.ignored {
+	border-color: var(--error-color);
+}
+
+.card-container.ignored:hover {
+	border-color: var(--error-color);
+}
+
+.card-header {
+	border-bottom: 1px solid var(--border-color);
+}
+
+.season-badge {
+	background-color: var(--primary-color);
+	color: black;
+	font-size: 0.875rem;
+	font-weight: 500;
+	padding: var(--padding-sm) var(--padding-md);
+}
+
+.calendar-icon {
+	margin-right: 0.25rem;
+}
+
+.anime-title-container {
+	flex-grow: 1;
+	padding: var(--padding-sm) var(--padding-md);
+}
+
+.anime-title-button {
+	all: unset;
+	font-size: 1.125rem;
+	font-weight: 700;
+	color: var(--text-white-color);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	cursor: pointer;
+}
+
+.anime-title-button:hover {
+	color: var(--accent-color);
+}
+
+.in-list-badge {
+	padding: var(--padding-sm) 0.75rem;
+	color: var(--primary-active-color);
+	background-color: var(--primary-faded-color);
+	border-left: 1px solid var(--border-color);
+}
+
+.check-icon {
+	margin-right: 0.25rem;
+}
+
+.in-list-badge span {
+	font-size: 0.875rem;
+	white-space: nowrap;
+}
+
+.ignore-button {
+	padding: var(--padding-sm) 0.75rem;
+	color: var(--text-light-color);
+	background: none;
+	border: none;
+	border-left: 1px solid var(--border-color);
+	cursor: pointer;
+}
+
+.ignore-button.ignored {
+	color: var(--error-color);
+}
+
+.ignore-button:hover {
+	color: var(--error-color);
+}
+
+.card-body {
+	display: flex;
+}
+
+.poster-container {
+	padding: var(--padding-sm);
+	display: flex;
+}
+
+.poster-container a {
+	height: 9rem;
+	width: 6rem;
+}
+
+.anime-poster {
+	object-fit: cover;
+	border-radius: 0.25rem;
+	box-shadow:
+		0 1px 3px 0 rgba(0, 0, 0, 0.1),
+		0 1px 2px 0 rgba(0, 0, 0, 0.06);
+	border: 1px solid var(--border-color);
+}
+
+.staff-info-container {
+	padding: var(--padding-sm) var(--padding-sm) var(--padding-md) var(--padding-sm);
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.staff-profile {
+	display: flex;
+	flex: 1;
+}
+
+.staff-profile a {
+	width: 60px;
+	height: 90px;
+	/* width: 4rem;
+	height: 4rem;
+	border-radius: 9999px; */
+}
+
+.staff-image {
+	border: 2px solid var(--primary-color);
+	object-fit: cover;
+	border-radius: 6px;
+}
+
+.staff-details {
+	margin-left: 1rem;
+	flex: 1;
+}
+
+.staff-name-button {
+	all: unset;
+	color: var(--text-white-color);
+	cursor: pointer;
+	font-weight: 700;
+	font-size: 1.125rem;
+	font-weight: bold;
+	display: inline-block;
+	margin: 0 0 0.5rem 0;
+}
+
+.staff-name-button:hover {
+	color: var(--accent-color);
+}
+
+.role-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin-top: 0.5rem;
+}
+
+.role-tag {
+	font-size: 0.75rem;
+	padding: 0.25rem 0.5rem;
+	border-radius: 0.125rem;
+	background-color: var(--primary-faded-color);
+	color: var(--primary-color);
+}
+
+.external-links {
+	display: flex;
+	justify-content: flex-end;
+	gap: 0.5rem;
+}
+
+.anilist-link,
+.mal-link {
+	padding: 0.25rem 0.75rem;
+	border-radius: 0.25rem;
+	font-size: 0.75rem;
+	text-decoration: none;
+}
+
+.anilist-link {
+	background-color: var(--primary-color);
+	color: black;
+}
+
+.anilist-link:hover {
+	opacity: 0.9;
+}
+
+.mal-link {
+	background-color: var(--surface-light-color);
+	color: var(--text-light-color);
+}
+
+.mal-link:hover {
+	background-color: var(--surface-hover-color);
+}
+
+.external-link-icon {
+	margin-right: 0.25rem;
+}
+
+.external-links button {
+	padding: 0.25rem 0.5rem;
+	background-color: var(--button-color);
+	color: var(--surface-color);
+	border-radius: 0.25rem;
+	font-size: 0.875rem;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.2s;
+	width: 10rem;
+	gap: 0.5rem;
+}
+
+.external-links button:hover {
+	background-color: var(--button-hover-color);
+	color: var(--text-white-color);
+}
+
+.external-links button:focus {
+	outline: 2px solid var(--text-light-color);
+	outline-offset: 1px;
+}
+
+.external-links button svg {
+	width: 1rem;
+	height: 1rem;
+}
+
+.accordion-wrapper {
+	display: grid;
+	grid-template-rows: 0fr;
+	background-color: var(--surface-light-color);
+	transition:
+		grid-template-rows 300ms ease,
+		background-color 300ms ease;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+
+.accordion-inner {
+	padding: var(--padding-md);
+	opacity: 0;
+	transition: opacity 300ms ease;
+	transition-delay: 0ms;
+}
+
+.accordion-content {
+	overflow: hidden;
+}
+
+.accordion-header {
+	cursor: pointer;
+}
+
+.accordion-wrapper-open {
+	grid-template-rows: 1fr;
+}
+
+.accordion-wrapper-open .accordion-inner {
+	opacity: 1;
+	transition-delay: 150ms;
+}
+
+.fade-in {
+	animation: fadeIn 500ms ease-in forwards;
+}
+
+.fade-out {
+	animation: fadeOut 500ms ease-out forwards;
+}
+
+.accordion-section {
+	margin-bottom: 1.5rem;
+}
+
+.accordion-label {
+	font-weight: 600;
+	color: var(--primary-color);
+	margin-bottom: 0.5rem;
+}
+
+.accordion-titles-container {
+	padding-left: 1rem;
+}
+
+.accordion-title-item {
+	margin-bottom: 0.5rem;
+	line-height: 1.4;
+	color: var(--text-light-color);
+}
+
+.accordion-info-grid {
+	display: grid;
+	grid-template-columns: minmax(120px, auto) 1fr;
+	gap: 0.5rem 1rem;
+	align-items: baseline;
+}
+
+.accordion-value {
+	color: var(--text-light-color);
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeOut {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}

@@ -1,0 +1,184 @@
+@let title = mediaTitle();
+@let name = staffName();
+@let altTitles = alternativeTitles();
+@if (item) {
+	<div class="anime-staff-card">
+		<div
+			class="card-container"
+			[class.ignored]="isIgnored"
+		>
+			<div class="card-header flex-align-stretch">
+				<div class="season-badge flex-align-center">
+					<gumi-icon
+						class="calendar-icon"
+						[type]="calendarIconType"
+						size="16"
+					/>
+					<span>{{ item | mediaSeasonDisplay }}</span>
+				</div>
+
+				<div class="anime-title-container flex-align-center">
+					<button
+						class="anime-title-button no-margin"
+						(click)="selectMedia(title)"
+					>
+						{{ title }}
+					</button>
+				</div>
+
+				<div class="flex-align-stretch">
+					@if (isListed) {
+						<div class="in-list-badge flex-align-center">
+							<gumi-icon
+								class="check-icon"
+								size="16"
+								[type]="checkIconType"
+							/>
+							<span>In List</span>
+						</div>
+					}
+					<button
+						class="ignore-button flex-center"
+						title="{{ isIgnored ? 'Restore' : 'Ignore' }}"
+						[class.ignored]="isIgnored"
+						(click)="onIgnoreToggle(!isIgnored)"
+					>
+						@if (!isIgnored) {
+							<gumi-icon
+								size="18"
+								[type]="cancelIconType"
+							/>
+						} @else {
+							<gumi-icon
+								[type]="plusIconType"
+								size="18"
+							/>
+						}
+					</button>
+				</div>
+			</div>
+
+			<div class="card-body">
+				<div class="poster-container">
+					<a
+						href="https://anilist.co/anime/{{ item.mediaId }}"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<img
+							[src]="item.mediaImage.medium || item.mediaImage.large || 'assets/default-media.png'"
+							[alt]="title"
+							class="anime-poster full-size"
+						/>
+					</a>
+				</div>
+
+				<div class="staff-info-container">
+					<div class="staff-profile">
+						<a
+							href="https://anilist.co/staff/{{ item.staffId }}"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<img
+								[src]="item.staffImage.medium || item.staffImage.large || 'assets/default-staff.png'"
+								[alt]="name"
+								class="staff-image full-size"
+							/>
+						</a>
+						<div class="staff-details">
+							<button
+								class="staff-name-button"
+								(click)="selectStaff(name)"
+							>
+								{{ name }}
+							</button>
+							<div class="role-tags">
+								@for (role of roles(); track role) {
+									<span class="role-tag">{{ role }}</span>
+								}
+							</div>
+						</div>
+					</div>
+
+					<div class="external-links">
+						<a
+							href="https://anilist.co/anime/{{ item.mediaId }}"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="anilist-link flex-align-center"
+						>
+							<gumi-icon
+								class="external-link-icon"
+								size="12"
+								[type]="linkIconType"
+							/>
+							AniList
+						</a>
+						@if (item.malId) {
+							<a
+								href="https://myanimelist.net/anime/{{ item.malId }}"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="mal-link flex-align-center"
+							>
+								<gumi-icon
+									class="external-link-icon"
+									size="12"
+									[type]="linkIconType"
+								/>
+								MAL
+							</a>
+						}
+						<button
+							class="flex-center"
+							(click)="toggleExpanded()"
+						>
+							<span>More</span>
+							@if (isExpanded) {
+								<gumi-icon
+									class="chevron-up"
+									size="16"
+									[type]="chevronUpType"
+								/>
+							} @else {
+								<gumi-icon
+									class="chevron-down"
+									size="16"
+									[type]="chevronDownType"
+								/>
+							}
+						</button>
+					</div>
+				</div>
+			</div>
+			<div
+				class="accordion-wrapper"
+				[class.accordion-wrapper-open]="isExpanded"
+			>
+				<div class="accordion-content">
+					<div class="accordion-inner">
+						@if (altTitles.length) {
+							<div class="accordion-section">
+								<div class="accordion-label">Alternative Titles:</div>
+								<div class="accordion-titles-container">
+									@for (title of altTitles; track title) {
+										<div class="accordion-title-item">{{ title }}</div>
+									}
+								</div>
+							</div>
+						}
+
+						<div class="accordion-info-grid">
+							<div class="accordion-label">Premiere Date:</div>
+							<div class="accordion-value">{{ premiereDate() }}</div>
+
+							<div class="accordion-label">Details:</div>
+							<div class="accordion-value">{{ mediaDetails() }}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+}
