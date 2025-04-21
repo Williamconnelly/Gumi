@@ -55,7 +55,7 @@ You can verify the installation with:
 ng version
 ```
 
-### Download Gumi
+### 3. Download Gumi
 
 #### **Option 1:**
 
