@@ -6,6 +6,9 @@
     "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
@@ -13,10 +16,34 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "importHelpers": true,
     "target": "ES2022",
-    "module": "ES2022"
+    "module": "ES2022",
+    "lib": [
+      "esnext",
+      "dom",
+      "esnext.asynciterable"
+    ],
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "paths": {
+      "@app/*": [
+        ""
+      ],
+      "@gumi/common/*": [
+        "src/app/common/*"
+      ],
+      "@gumi/graphql": [
+        "src/app/graphql/index.ts"
+      ],
+      "@gumi/views": [
+        "src/app/views/index.ts"
+      ],
+      "@gumi/components": [
+        "src/app/components/index.ts"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
