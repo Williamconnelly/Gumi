@@ -1,8 +1,88 @@
 # Gumi
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.3.
+![Gumi Homepage](/public/assets/read-me/home-screenshot.png)
 
-## Development server
+Gumi is a web-based interface for the [AniList API](https://anilist.co/) with an emphasis on Anime production and staffing details.
+
+It uses your favorite staff picks from AniList to visualize a configurable feed of anime and staff credits. It’s a great tool for exploring recent production announcements and hidden gems through the lens of your favorite directors, animators, producers, and more.
+
+## 🚀 Features
+
+- Search AniList Users
+- View a staff-specific feed of anime production details
+
+![Gumi Search](/public/assets/read-me/search-screenshot.png)
+
+- Search and filter the feed through a number of controls
+- Remove unwanted media with the toggleable Ignore feature.
+
+![Gumi Production Feed](/public/assets/read-me/production-feed-screenshot.png)
+
+## 📦 Getting Started
+
+### Requirements
+
+- Node.js (v18+ recommended)
+- Angular CLI (v19+)
+
+✅ _If you already have Node.js and Angular installed - you can skip to step 3._
+
+### 1. Install Node.js
+
+First, you’ll need [Node.js](https://nodejs.org/en) installed on your machine.
+
+- Recommended version: Node.js 18+
+
+- To check if Node is installed, run:
+
+```bash
+node -v
+```
+
+If you don’t have it, download and run the installer.
+
+### 2. Install Angular CLI
+
+Once Node is installed, install the Angular CLI globally:
+
+```bash
+npm install -g @angular/cli
+```
+
+You can verify the installation with:
+
+```bash
+ng version
+```
+
+### Download Gumi
+
+#### **Option 1:**
+
+- Click the green "Code" button
+
+- Choose "Download ZIP"
+
+- Then unzip it, open a terminal in that folder, and follow the install steps in step 4.
+
+#### **Option 2: Clone this Repository**
+
+If you have git installed or want to install [git](https://git-scm.com/downloads)
+
+```bash
+git clone https://github.com/Williamconnelly/Gumi
+cd gumi
+```
+
+### 4. Install Dependencies
+
+Run this to install the necessary files
+
+```bash
+npm install
+```
+
+### 5. Serve the Application Locally
 
 To start a local development server, run:
 
@@ -10,50 +90,16 @@ To start a local development server, run:
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Once the server is running, open your browser and navigate to `http://localhost:4200/`.
 
-## Code scaffolding
+✅ You're good to go!
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 📝 Notes
 
-```bash
-ng generate component component-name
-```
+The AniList API, while bountiful, imposes rather steep rate-limitations which restrict Gumi from fetching larger sets of data at one time. It's possible you may encounter an error when fetching *particularly large* lists of media and will have to wait out the timer to complete the task.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## ⚙️ Technical Details
 
-```bash
-ng generate --help
-```
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.3.
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Data is sourced from the [AniList GraphQL API](https://docs.anilist.co/)
