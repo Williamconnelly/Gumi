@@ -1,0 +1,193 @@
+@let filteredFeed = filterService.filteredData$ | async;
+@let feed = productionFeed();
+@let error = errorMessage();
+@let user = userList();
+@let activeFilters = activeFilterProperties();
+
+<div class="media-feed-container full-size">
+	<div class="filter-area">
+		@if (!error) {
+			<gumi-accordion>
+				@if (user) {
+					<div class="user-display flex-center">
+						<a
+							href="https://anilist.co/user/{{ userId }}"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<img
+								[src]="user.avatar.medium || user.avatar.large || user.avatar.extraLarge"
+								[alt]="user.userName"
+								class="user-avatar full-size"
+							/>
+						</a>
+						<span>{{ user.userName }}</span>
+					</div>
+				}
+				@if (feed | isNullOrUndefined) {
+				} @else if (feed?.length) {
+					<gumi-input
+						placeholder="Search Staff"
+						[value]="staffNameQuery"
+						(valueChange)="onStaffNameFilter($event)"
+					/>
+					<gumi-input
+						placeholder="Search Media"
+						[value]="mediaTitleQuery"
+						(valueChange)="onMediaTitleFilter($event)"
+					/>
+					<gumi-input
+						placeholder="Search Credits"
+						[value]="creditsQuery"
+						(valueChange)="onCreditsFilter($event)"
+					/>
+					<gumi-slider
+						title="Year"
+						[sliderRange]="yearSliderRange"
+						(valueChanged)="onYearRangeFilter($event)"
+					/>
+					<gumi-accordion-item
+						label="User List"
+						[isExpanded]="true"
+						[showCancelIcon]="activeFilters | isActiveFilter: 'userListFilter'"
+						(cancelClicked)="resetFilter('userListFilter')"
+					>
+						<gumi-selector
+							#UserListSelector
+							accordionContent
+							[isMultiselect]="false"
+							[options]="userListOptions"
+							(singleSelectionChange)="onUserListFilter($event)"
+						/>
+					</gumi-accordion-item>
+					<gumi-accordion-item
+						label="Format"
+						[showCancelIcon]="activeFilters | isActiveFilter: 'formats'"
+						(cancelClicked)="resetFilter('formats')"
+					>
+						<gumi-selector
+							#FormatSelector
+							accordionContent
+							[options]="formatOptions"
+							(selectionChange)="onFormatFilter($event)"
+						/>
+					</gumi-accordion-item>
+					<gumi-accordion-item
+						label="Status"
+						[showCancelIcon]="activeFilters | isActiveFilter: 'statuses'"
+						(cancelClicked)="resetFilter('statuses')"
+					>
+						<gumi-selector
+							#StatusSelector
+							accordionContent
+							[options]="statusOptions"
+							(selectionChange)="onStatusFilter($event)"
+						/>
+					</gumi-accordion-item>
+					<gumi-accordion-item
+						label="Season"
+						[showCancelIcon]="activeFilters | isActiveFilter: 'seasons'"
+						(cancelClicked)="resetFilter('seasons')"
+					>
+						<gumi-selector
+							#SeasonSelector
+							accordionContent
+							[options]="seasonOptions"
+							(selectionChange)="onSeasonFilter($event)"
+						/>
+					</gumi-accordion-item>
+					@if (occupationOptions.length) {
+						<gumi-accordion-item
+							label="Occupation"
+							[showCancelIcon]="activeFilters | isActiveFilter: 'occupations'"
+							(cancelClicked)="resetFilter('occupations')"
+						>
+							<gumi-selector
+								#OccupationSelector
+								accordionContent
+								[options]="occupationOptions"
+								(selectionChange)="onOccupationFilter($event)"
+							/>
+						</gumi-accordion-item>
+					}
+					<gumi-accordion-item
+						label="Ignore"
+						[showCancelIcon]="showIgnoredItems"
+						(cancelClicked)="toggleIgnoredItems(false)"
+					>
+						<div
+							accordionContent
+							class="ignore-controls-container"
+						>
+							<gumi-toggle-switch
+								[checked]="showIgnoredItems"
+								[disabled]="!userIgnoredIds.length"
+								label="Show Ignored"
+								(checkedChange)="toggleIgnoredItems($event)"
+							/>
+							<button
+								class="clear-storage-button"
+								(click)="clearIgnoreList()"
+							>
+								Clear Ignore List
+							</button>
+						</div>
+					</gumi-accordion-item>
+				}
+			</gumi-accordion>
+		} @else {
+			<div class="body-height flex-center full-size">
+				<div class="icon-container flex-center">
+					<gumi-icon
+						color="var(--error-color)"
+						size="42"
+						[type]="errorIconType"
+					/>
+				</div>
+			</div>
+		}
+	</div>
+	@if (!error) {
+		@if (feed | isNullOrUndefined) {
+		} @else if (feed?.length) {
+			<cdk-virtual-scroll-viewport
+				itemSize="223.8"
+				class="viewport"
+			>
+				<div class="production-card-container">
+					<ng-container *cdkVirtualFor="let item of filteredFeed; trackBy: trackById; templateCacheSize: 0">
+						<gumi-production-card
+							[item]="item"
+							[isListed]="userMediaListIds | isInUserList: item.mediaId"
+							[isIgnored]="userIgnoredIds | isInIgnoreList: item.mediaId"
+							(ignoreToggled)="onIgnoreToggled($event, item)"
+							(staffSelected)="onStaffSelected($event)"
+							(mediaSelected)="onMediaSelected($event)"
+						/>
+					</ng-container>
+				</div>
+			</cdk-virtual-scroll-viewport>
+		} @else {
+			<div class="no-display full-size">
+				<gumi-no-results-card [message]="noResultsMessage">
+					<a
+						href="https://anilist.co/user/{{ userId }}"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="anilist-button flex-center"
+					>
+						<gumi-icon
+							[type]="linkIconType"
+							size="1rem"
+						/>
+						<span>AniList</span>
+					</a>
+				</gumi-no-results-card>
+			</div>
+		}
+	} @else {
+		<div class="no-display">
+			<gumi-error-card [errorMessage]="error" />
+		</div>
+	}
+</div>
