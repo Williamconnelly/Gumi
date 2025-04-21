@@ -1,1 +1,173 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+	--accent-color: #ff7e67;
+	--accent-hover-color: #ff4a2a;
+
+	--background-color: #0d1117;
+	--border-color: #30363d;
+
+	--button-color: #f3f4f6;
+	--button-hover-color: #55596a;
+
+	--error-color: #b13124;
+	--error-hover-color: #c0392b;
+	--input-color: #0f0f11;
+
+	--primary-active-color: #1bf5ae;
+	--primary-color: #4ecca3;
+	--primary-dark-color: #4b7173;
+	--primary-faded-color: rgb(78, 204, 163, 0.08);
+	--primary-dim-color: #2d8a6b;
+
+	--surface-color: #161b22;
+	--surface-hover-color: #3f4c5e;
+	--surface-light-color: #232832;
+
+	--text-light-color: #e0e0e0;
+	--text-white-color: #fff;
+
+	--radius-sm: 4px;
+	--radius-md: 8px;
+	--radius-lg: 12px;
+	--radius-round: 999px;
+
+	--padding-sm: 0.5rem;
+	--padding-md: 1rem;
+
+	--transition-speed: 0.3s;
+	--transparency-low: rgb(0, 0, 0, 0.2);
+}
+
+/* TODO: THEME WIP */
+
+/* :root {
+	--accent-color: #ff8906;
+	--accent-hover-color: #ff4a2a;
+
+	--background-color: #0b1622;
+	--border-color: #30363d;
+
+	--button-color: #f3f4f6;
+	--button-hover-color: #55596a;
+
+	--error-color: #b13124;
+	--error-hover-color: #c0392b;
+	--input-color: #0f0f11;
+
+	--primary-active-color: #1bf5ae;
+	--primary-color: #52c4ff;
+	--primary-dark-color: #4b7173;
+	--primary-faded-color: rgb(78, 204, 163, 0.08);
+	--primary-dim-color: #2d8a6b;
+
+	--surface-color: #151f2e;
+	--surface-hover-color: #378556;
+	--surface-light-color: #2e3744;
+
+	--text-light-color: #e0e0e0;
+	--text-white-color: #fff;
+
+	--radius-sm: 4px;
+	--radius-md: 8px;
+	--radius-lg: 12px;
+	--radius-round: 999px;
+
+	--padding-sm: 0.5rem;
+	--padding-md: 1rem;
+
+	--transition-speed: 0.3s;
+	--transparency-low: rgb(0, 0, 0, 0.2);
+} */
+
+html,
+body {
+	display: block;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+blockquote,
+pre {
+	margin: 0;
+	padding: 0;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+body {
+	background-color: var(--background-color);
+	font-family: 'Inter', sans-serif;
+	line-height: 1.6;
+	color: var(--text-white-color);
+}
+
+.app-full-height {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.content-wrapper {
+	flex: 1;
+}
+
+* {
+	scrollbar-width: thin;
+	scrollbar-color: #9f9f9f #2c2c2c;
+}
+
+.body-height {
+	height: calc(100vh - 49px);
+}
+
+.flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.flex-align-center {
+	display: flex;
+	align-items: center;
+}
+
+.flex-justify-center {
+	display: flex;
+	justify-content: center;
+}
+
+.flex-align-stretch {
+	display: flex;
+	align-items: stretch;
+}
+
+.full-size {
+	height: 100%;
+	width: 100%;
+}
+
+.no-margin {
+	margin: 0;
+}
+
+.no-padding {
+	padding: 0;
+}

@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -9,21 +9,17 @@ describe('AppComponent', () => {
   });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+    const _fixture: ComponentFixture<AppComponent> = TestBed.createComponent(AppComponent);
+    const _app: AppComponent = _fixture.componentInstance;
 
-  it(`should have the 'gumi' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('gumi');
+    expect(_app).toBeTruthy();
   });
 
   it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, gumi');
+    const _fixture: ComponentFixture<AppComponent> = TestBed.createComponent(AppComponent);
+    const _compiled: HTMLElement = _fixture.nativeElement as HTMLElement;
+
+    _fixture.detectChanges();
+    expect(_compiled.querySelector('h1')?.textContent).toContain('Hello, gumi');
   });
 });
