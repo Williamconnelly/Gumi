@@ -1,0 +1,134 @@
+.selector-container {
+	background-color: var(--surface-light-color);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+	font-family: 'Inter', sans-serif;
+	padding: 0.25rem 0px;
+}
+
+h3 {
+	color: var(--text-light-color);
+	font-size: 18px;
+	font-weight: 600;
+	margin-top: 0;
+	margin-bottom: 16px;
+	padding-bottom: 8px;
+	display: inline-block;
+}
+
+.select-all-row {
+	margin-bottom: 12px;
+	padding-bottom: 12px;
+}
+
+.options-list {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	max-height: 300px;
+}
+
+.option-item {
+	transition: all 0.2s ease;
+}
+
+.option-item:hover {
+	transform: translateX(4px);
+}
+
+.checkbox-container,
+.radio-container {
+	cursor: pointer;
+	-webkit-user-select: none;
+	user-select: none;
+	width: 100%;
+	padding: 2px 7px;
+	transition: background-color 0.1s ease;
+}
+
+.checkbox-container:hover,
+.radio-container:hover {
+	background-color: var(--surface-hover-color);
+}
+
+.checkbox-container input,
+.radio-container input {
+	position: absolute;
+	opacity: 0;
+	height: 0;
+	width: 0;
+}
+
+.checkbox-container .checkbox-custom {
+	position: relative;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	margin-right: 12px;
+	border: 2px solid var(--border-color);
+	border-radius: var(--radius-sm);
+	background-color: var(--text-white-color);
+	transition: all 0.2s ease;
+}
+
+.checkbox-container input:checked ~ .checkbox-custom {
+	background-color: var(--accent-color);
+}
+
+.checkbox-container .checkbox-custom:after {
+	content: '';
+	position: absolute;
+	display: none;
+	left: 6px;
+	top: 2px;
+	width: 5px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+}
+
+.checkbox-container input:checked ~ .checkbox-custom:after {
+	display: block;
+}
+
+.radio-container .radio-custom {
+	position: relative;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	margin-right: 12px;
+	border: 2px solid var(--border-color);
+	border-radius: var(--radius-round);
+	background-color: var(--text-white-color);
+	transition: all 0.2s ease;
+}
+
+.radio-container .radio-custom:after {
+	content: '';
+	position: absolute;
+	display: none;
+	left: 4px;
+	top: 4px;
+	width: 8px;
+	height: 8px;
+	border-radius: var(--radius-round);
+	background: var(--accent-color);
+}
+
+.radio-container input:checked ~ .radio-custom:after {
+	display: block;
+}
+
+.checkbox-label,
+.radio-label {
+	font-size: 15px;
+	color: var(--text-light-color);
+	font-weight: 500;
+	transition: color 0.2s ease;
+}
+
+.checkbox-container input:checked ~ .checkbox-label,
+.radio-container input:checked ~ .radio-label {
+	color: var(--accent-color);
+	font-weight: 600;
+}

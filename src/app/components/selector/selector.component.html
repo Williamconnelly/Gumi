@@ -1,0 +1,56 @@
+@if (options.length) {
+	<div class="selector-container">
+		@if (title) {
+			<h3>{{ title }}</h3>
+		}
+		<form [formGroup]="form">
+			@if (isMultiselect) {
+				@if (enableSelectAll) {
+					<div class="select-all-row">
+						<label class="checkbox-container flex-align-center">
+							<input
+								type="checkbox"
+								[checked]="allSelected()"
+								(change)="toggleSelectAll()"
+							/>
+							<span class="checkbox-custom"></span>
+							<span class="checkbox-label">Select All</span>
+						</label>
+					</div>
+				}
+
+				<div class="options-list">
+					@for (option of options; track option.id; let index = $index) {
+						<div class="option-item flex-align-center">
+							<label class="checkbox-container flex-align-center">
+								<input
+									type="checkbox"
+									[formControl]="getFormControl(index)"
+								/>
+								<span class="checkbox-custom"></span>
+								<span class="checkbox-label">{{ option.display }}</span>
+							</label>
+						</div>
+					}
+				</div>
+			} @else {
+				<div class="options-list">
+					@for (option of options; track option.id; let index = $index) {
+						<div class="option-item flex-align-center">
+							<label class="radio-container flex-align-center">
+								<input
+									type="radio"
+									[value]="option.id"
+									formControlName="selectedOption"
+									name="selectedOption"
+								/>
+								<span class="radio-custom"></span>
+								<span class="radio-label">{{ option.display }}</span>
+							</label>
+						</div>
+					}
+				</div>
+			}
+		</form>
+	</div>
+}
