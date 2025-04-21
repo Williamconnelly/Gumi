@@ -1,0 +1,24 @@
+@let error = errorMessage();
+<div class="no-results flex-center">
+	<div class="icon-container flex-center">
+		<gumi-icon
+			color="var(--error-color)"
+			size="35"
+			[type]="errorIconType"
+		/>
+	</div>
+	<p>{{ error.message }}</p>
+	@if (error.subMessage) {
+		<span>{{ error.subMessage }}</span>
+	}
+	<button
+		class="clear-storage-button flex-center"
+		(click)="onRetry()"
+	>
+		<gumi-icon
+			size="1rem"
+			[type]="retryIconType"
+		/>
+		<span>Retry</span>
+	</button>
+</div>
