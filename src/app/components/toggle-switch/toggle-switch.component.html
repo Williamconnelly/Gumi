@@ -1,0 +1,23 @@
+@let lbl = label();
+<div class="flex-align-center">
+	@if (lbl) {
+		<span
+			class="toggle-label"
+			[class.disabled]="disabled"
+			>{{ lbl }}
+		</span>
+	}
+	<label
+		class="toggle"
+		[attr.for]="inputId"
+	>
+		<input
+			[id]="inputId"
+			type="checkbox"
+			[checked]="checked"
+			(change)="onToggleChange($event)"
+			[disabled]="disabled"
+		/>
+		<span class="slider"></span>
+	</label>
+</div>
