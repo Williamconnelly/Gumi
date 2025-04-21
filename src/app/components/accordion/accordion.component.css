@@ -1,0 +1,11 @@
+:host {
+	display: block;
+	overflow: auto;
+	width: 100%;
+}
+
+.accordion {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}

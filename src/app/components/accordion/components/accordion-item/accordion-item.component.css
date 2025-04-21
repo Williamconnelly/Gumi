@@ -1,0 +1,68 @@
+.accordion-button {
+	all: unset;
+	width: 100%;
+}
+
+.acordion-button:focus {
+	outline: none;
+}
+
+.accordion-item {
+	border-radius: var(--radius-sm);
+	overflow: hidden;
+}
+
+.accordion-item-label {
+	padding: 6px 12px;
+	font-weight: 500;
+	cursor: pointer;
+	justify-content: space-between;
+	-webkit-user-select: none;
+	user-select: none;
+	background-color: var(--surface-color);
+	position: relative;
+	border: 1px solid var(--border-color);
+	color: var(--text-light-color);
+}
+
+.accordion-content {
+	max-height: 92px;
+	overflow: visible;
+	transition: max-height var(--transition-speed);
+	background-color: var(--surface-light-color);
+	color: var(--text-light-color);
+}
+
+.accordion-item.active .accordion-content {
+	overflow: visible;
+}
+
+.accordion-item-label:hover {
+	background-color: var(--surface-hover-color);
+}
+
+.accordion-icon {
+	position: absolute;
+	right: 7px;
+	font-size: 16px;
+	border: 1px solid var(--primary-color);
+	padding: 0px 10px;
+	border-radius: 6px;
+	background-color: transparent;
+	cursor: pointer;
+	font-family: inherit;
+	color: inherit;
+	outline: none;
+	box-shadow: none;
+	line-height: inherit;
+	overflow: visible;
+	text-transform: none;
+}
+
+.accordion-icon:hover {
+	background-color: var(--primary-dim-color);
+}
+
+.accordion-item.active .accordion-icon {
+	border-color: var(--primary-color);
+}

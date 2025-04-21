@@ -1,0 +1,35 @@
+<div
+	class="accordion-item"
+	[class.active]="isExpanded"
+>
+	<button
+		class="accordion-button"
+		(click)="toggleExpanded()"
+	>
+		<div class="accordion-item-label flex-align-center">
+			<div>{{ label }}</div>
+			<button
+				type="button"
+				class="accordion-icon flex-center no-margin"
+				(click)="onButtonClick($event)"
+			>
+				@if (showCancelIcon) {
+					×
+				} @else {
+					{{ isExpanded ? '−' : '+' }}
+				}
+			</button>
+		</div>
+	</button>
+	<div
+		class="accordion-content"
+		#contentWrapper
+		[style.maxHeight.px]="isExpanded ? contentHeight() : 0"
+		[style.overflow]="isExpanded ? 'visible' : 'hidden'"
+		[style.transition]="'max-height 0.3s ease'"
+	>
+		<div #content>
+			<ng-content select="[accordionContent]"></ng-content>
+		</div>
+	</div>
+</div>
