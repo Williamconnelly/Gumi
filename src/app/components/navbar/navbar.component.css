@@ -1,0 +1,54 @@
+:host {
+	display: block;
+}
+
+.navbar {
+	background-color: var(--input-color);
+	color: var(--text-white-color);
+	border-bottom: 1px solid var(--border-color);
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+	display: flex;
+	height: 3rem;
+}
+
+.navbar-logo {
+	width: 20rem;
+	border-right: 1px solid var(--border-color);
+}
+
+.navbar-logo a {
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: var(--primary-color);
+	text-decoration: none;
+}
+
+.navbar-links {
+	display: flex;
+	gap: 20px;
+}
+
+.navbar-links a {
+	color: var(--text-light-color);
+	text-decoration: none;
+	font-weight: 500;
+	padding: 8px 12px;
+	transition: all 0.2s ease;
+	border-bottom: 3px solid transparent;
+}
+
+.navbar-links a.active {
+	color: var(--accent-color);
+	border-bottom: 3px solid var(--accent-color);
+}
+
+.navbar-links a:hover {
+	color: var(--text-white-color);
+	background-color: var(--accent-color);
+}

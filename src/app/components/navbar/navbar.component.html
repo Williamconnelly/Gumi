@@ -1,0 +1,16 @@
+<nav class="navbar">
+	<div class="navbar-container">
+		<div class="navbar-logo flex-center">
+			<a routerLink="/">Gumi</a>
+		</div>
+		<div class="navbar-links">
+			<a
+				routerLink="/feed/{{ userId }}"
+				routerLinkActive="active"
+				[routerLinkActiveOptions]="{ exact: false }"
+			>
+				Production Feed
+			</a>
+		</div>
+	</div>
+</nav>
